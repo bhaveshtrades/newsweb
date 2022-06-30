@@ -11,7 +11,7 @@ function NewsItem({imageURL, newsTitle, newsDescription, newsURL}) {
     <a href={newsURL} target="_blank" className="btn btn-sm btn-primary mt-3" rel="noreferrer">Read More</a>
   </div>
 </div>
-  )
+  ) 
 }
 
 export default NewsItem;
