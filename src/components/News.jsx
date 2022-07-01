@@ -71,9 +71,9 @@ function App({newsCountry, newsNumber, newsCategory}){
       {spinner && <div className="flex justify-center"><Loading></Loading></div>}
      <div className="row gap-x-14 gap-y-4 justify-center">
       {(!spinner && !searching) && data.map((element, index)=>(
-    <NewsItem key={index} newsDescription={element.description} newsTitle={element.title} imageURL={element.urlToImage} newsURL={element.url}/>))}
+    <NewsItem key={index} newsSource={element.source.name} newsDescription={element.description} newsTitle={element.title} imageURL={element.urlToImage} newsURL={element.url}/>))}  
       {(!spinner && searching) && filteredData.map((element, index)=>(
-        <NewsItem key={index} newsDescription={element.description} newsTitle={element.title} imageURL={element.urlToImage} newsURL={element.url}/>))
+        <NewsItem key={index} newsSource={element.source.name} newsDescription={element.description} newsTitle={element.title} imageURL={element.urlToImage} newsURL={element.url}/>))
         }
     </div>
     </div>
