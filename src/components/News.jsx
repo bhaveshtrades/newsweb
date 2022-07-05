@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import NewsItem from './NewsItem';
 import Loading from "./Loading";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import './style.css';
 
 
 function App({newsCountry, newsNumber, newsCategory}){ 
@@ -11,6 +12,7 @@ function App({newsCountry, newsNumber, newsCategory}){
   const[spinner, setSpinner] = useState(false);
   const[searchWord, setSearchWord] = useState();
   const[searching, setSearching] = useState(false);
+  const[totalResults, setTotalResults] = useState();
 
   const handlePrevPage = ()=>{
     setPage(page - 1);
@@ -29,7 +31,6 @@ function App({newsCountry, newsNumber, newsCategory}){
     }
   })
 
-
   const handleNextPage = ()=>{
     setPage(page + 1);
   }
@@ -39,26 +40,28 @@ function App({newsCountry, newsNumber, newsCategory}){
   useEffect(()=>{
     setSpinner(true);
     fetch(mainURL).then(data => data.json())
-    .then((response) => {setData(response.articles)
+    .then((response) => {setData(response.articles);
+                         setTotalResults(response.totalResults)
                          setSpinner(false)
                          });
-  }, [mainURL, page]);
+  }, [mainURL]); 
 
-  
+  console.log(totalResults);
+
   return(
     <>  
     <nav className="navbar navbar-expand navbar-dark bg-dark">
     <div className="container-fluid">
     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div className="navbar-nav">
-      <Link to ="/general"><button type="button" className="btn btn-dark">General</button></Link>
-      <Link to ="/sports"><button type="button" className="btn btn-dark">Sports</button></Link>
-      <Link to ="/science"><button type="button" className="btn btn-dark">Science</button></Link>
-      <Link to ="/technology"><button type="button" className="btn btn-dark">Technology</button></Link>
-      <Link to ="/health"><button type="button" className="btn btn-dark">Health</button></Link>
-      <Link to ="/business"><button type="button" className="btn btn-dark">Business</button></Link>
-      <Link to ="/politics"><button type="button" className="btn btn-dark">Politics</button></Link>
-      <Link to ="/entertainment"><button type="button" className="btn btn-dark">Entertainment</button></Link>
+      <div className="navbar-nav gap-x-4 text-yellow-50">
+      <NavLink to="/general">General</NavLink>
+      <NavLink to ="/sports">Sports</NavLink>
+      <NavLink to ="/science">Science</NavLink>
+      <NavLink to ="/technology">Technology</NavLink>
+      <NavLink to ="/health">Health</NavLink>
+      <NavLink to ="/business">Business</NavLink>
+      <NavLink to ="/politics">Politics</NavLink>
+      <NavLink to ="/entertainment">Entertainment</NavLink>
       </div>
     </div>
     </div>
@@ -78,8 +81,8 @@ function App({newsCountry, newsNumber, newsCategory}){
     </div>
     </div>
     {!spinner && <div className="d-flex justify-content-end gap-x-4 pr-3 pb-5">
-    <button type="button" className="btn btn-dark bg-dark" onClick={handlePrevPage} disabled={page<=1}>Previous</button>
-    <button type="button" className="btn btn-dark bg-dark" onClick={handleNextPage} disabled={data.length < newsNumber}>Next</button>
+    {(page>1) && <button type="button" className="btn btn-dark bg-dark" onClick={handlePrevPage}>Previous</button>}
+    {(page + 1 <= Math.ceil(totalResults/newsNumber)) && <button type="button" className="btn btn-dark bg-dark" onClick={handleNextPage}>Next</button>}
     </div>}
     </>
   );

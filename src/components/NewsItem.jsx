@@ -6,7 +6,7 @@ function NewsItem({imageURL, newsTitle, newsDescription, newsURL, newsSource}) {
     <div className="card" style={{width: "18rem"}}>
       <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark z-10">
     {newsSource}
-    {/* <span className="visually-hidden">unread messages</span> */}
+    <span className="visually-hidden">unread messages</span>
   </span>
   <img src={imageURL} className="card-img-top" alt="..."/>
   <div className="card-body">
