@@ -3,8 +3,13 @@ import { Routes, Route } from 'react-router-dom';
 import News from '../components/News';
 import PropTypes from 'prop-types';
 import AuthRoute from './AuthRoute';
+import { useSelector } from 'react-redux';
+import Login from '../components/Login';
+import ModeSwitch from '../components/ModeSwitch';
 
 function AppRoute() {
+
+  let loggedStatus = useSelector((state)=>state);
 
     News.defaultProps = {
         newsCountry: "in",
@@ -43,15 +48,15 @@ function AppRoute() {
   return (
     <Routes>
     <Route exact path='*' element={<AuthRoute/>}/>
-    <Route path='/news' element={<News key='general' newsCategory='general' bodyColorProp={bodyColor} hColorProp={hColor} toggleModeProp={toggleMode} modeTxtProp={modeTxt} modeProp={mode} badgeColorProp={badgeColor} />}/>
-     <Route path='/news/general' element={<News key='general' newsCategory='general' bodyColorProp={bodyColor} hColorProp={hColor} toggleModeProp={toggleMode} modeTxtProp={modeTxt} modeProp={mode} badgeColorProp={badgeColor} />}/>
-     <Route path='/news/sports' element={<News key='sports' newsCategory='sports' bodyColorProp={bodyColor} hColorProp={hColor} toggleModeProp={toggleMode} modeTxtProp={modeTxt} modeProp={mode} badgeColorProp={badgeColor} />}/>
-     <Route path='/news/science' element={<News key='science' newsCategory='science' bodyColorProp={bodyColor} hColorProp={hColor} toggleModeProp={toggleMode} modeTxtProp={modeTxt} modeProp={mode} badgeColorProp={badgeColor} />}/>
-     <Route path='/news/technology' element={<News key='technology'newsCategory='technology' bodyColorProp={bodyColor} hColorProp={hColor} toggleModeProp={toggleMode} modeTxtProp={modeTxt} modeProp={mode} badgeColorProp={badgeColor} />}/>
-     <Route path='/news/health' element={<News key='health' newsCategory='health' bodyColorProp={bodyColor} hColorProp={hColor} toggleModeProp={toggleMode} modeTxtProp={modeTxt} modeProp={mode} badgeColorProp={badgeColor} />}/>
-     <Route path='/news/business' element={<News key='business' newsCategory='business' bodyColorProp={bodyColor} hColorProp={hColor} toggleModeProp={toggleMode} modeTxtProp={modeTxt} modeProp={mode} badgeColorProp={badgeColor} />}/>
-     <Route path='/news/politics' element={<News key='politics' newsCategory='politics' bodyColorProp={bodyColor} hColorProp={hColor} toggleModeProp={toggleMode} modeTxtProp={modeTxt} modeProp={mode} badgeColorProp={badgeColor} />}/>
-     <Route path='/news/entertainment' element={<News key='entertainment' newsCategory='entertainment' bodyColorProp={bodyColor} hColorProp={hColor} toggleModeProp={toggleMode} modeTxtProp={modeTxt} modeProp={mode} badgeColorProp={badgeColor} />}/>
+    <Route path='/' element={!loggedStatus?<Login/>:<News key='general' newsCategory='general' bodyColorProp={bodyColor} hColorProp={hColor} modeProp={mode} badgeColorProp={badgeColor} modeSwitchProp={<ModeSwitch toggleMode={toggleMode} modeTxt={modeTxt}/>}/>}/>
+    <Route path='/news/general' element={<News key='general' newsCategory='general' bodyColorProp={bodyColor} hColorProp={hColor} modeProp={mode} badgeColorProp={badgeColor} modeSwitchProp={<ModeSwitch toggleMode={toggleMode} modeTxt={modeTxt}/>}/>}/>
+    <Route path='/news/sports' element={<News key='sports' newsCategory='sports' bodyColorProp={bodyColor} hColorProp={hColor} modeProp={mode} badgeColorProp={badgeColor} modeSwitchProp={<ModeSwitch toggleMode={toggleMode} modeTxt={modeTxt}/>}/>}/>
+    <Route path='/news/science' element={<News key='science' newsCategory='science' bodyColorProp={bodyColor} hColorProp={hColor} modeProp={mode} badgeColorProp={badgeColor} modeSwitchProp={<ModeSwitch toggleMode={toggleMode} modeTxt={modeTxt}/>}/>}/>
+    <Route path='/news/technology' element={<News key='technology'newsCategory='technology' bodyColorProp={bodyColor} hColorProp={hColor} modeProp={mode} badgeColorProp={badgeColor} modeSwitchProp={<ModeSwitch toggleMode={toggleMode} modeTxt={modeTxt}/>}/>}/>
+    <Route path='/news/health' element={<News key='health' newsCategory='health' bodyColorProp={bodyColor} hColorProp={hColor} modeProp={mode} badgeColorProp={badgeColor} modeSwitchProp={<ModeSwitch toggleMode={toggleMode} modeTxt={modeTxt}/>}/>}/>
+    <Route path='/news/business' element={<News key='business' newsCategory='business' bodyColorProp={bodyColor} hColorProp={hColor} modeProp={mode} badgeColorProp={badgeColor} modeSwitchProp={<ModeSwitch toggleMode={toggleMode} modeTxt={modeTxt}/>}/>}/>
+    <Route path='/news/politics' element={<News key='politics' newsCategory='politics' bodyColorProp={bodyColor} hColorProp={hColor} modeProp={mode} badgeColorProp={badgeColor} modeSwitchProp={<ModeSwitch toggleMode={toggleMode} modeTxt={modeTxt}/>}/>}/>
+    <Route path='/news/entertainment' element={<News key='entertainment' newsCategory='entertainment' bodyColorProp={bodyColor} hColorProp={hColor} modeProp={mode} badgeColorProp={badgeColor} modeSwitchProp={<ModeSwitch toggleMode={toggleMode} modeTxt={modeTxt}/>}/>}/>
    </Routes>
   )
 }

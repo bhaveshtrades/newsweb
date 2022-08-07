@@ -4,9 +4,11 @@ import Loading from "./Loading";
 import { NavLink, Link } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import LoadingBar from "react-top-loading-bar";
-import ModeSwitch from "./ModeSwitch";
+import { useDispatch } from "react-redux";
 
-function App({newsCountry, newsCategory, newsNumber, bodyColorProp, toggleModeProp, modeTxtProp, modeProp ,hColorProp ,badgeColorProp}){ 
+function App({newsCountry, newsCategory, newsNumber, bodyColorProp, modeProp ,hColorProp ,badgeColorProp, modeSwitchProp}){ 
+
+  let dispatch = useDispatch();
 
   const[data, setData] = useState([]);
   const[loading, setLoading] = useState(true)
@@ -85,11 +87,11 @@ function App({newsCountry, newsCategory, newsNumber, bodyColorProp, toggleModePr
       <NavLink to ="/news/entertainment">Entertainment</NavLink>
       </div>
     </div> 
-    <ModeSwitch toggleMode={toggleModeProp} modeTxt={modeTxtProp}></ModeSwitch>
+    {modeSwitchProp}
     </div>
     <form className = "d-flex mr-3" role="search">
         <input className="form-control me-2" type="search" placeholder="Search News" aria-label="Search" onChange={enteredTitle}/>
-        <Link to ='/login'><button className="btn btn-outline-danger" type="submit">Logout</button></Link> 
+        <Link to ='/login'><button className="btn btn-outline-danger" type="submit" onClick={()=>dispatch({type: 'SIGN_OUT'})}>Logout</button></Link> 
       </form>
     </nav>
     <h1 className={`text-center text-5xl mt-20 ${hColorProp}`}><b>News For You</b></h1>
