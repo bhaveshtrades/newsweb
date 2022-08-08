@@ -9,7 +9,7 @@ import ModeSwitch from '../components/ModeSwitch';
 
 function AppRoute() {
 
-  let loggedStatus = useSelector((state)=>state);
+  let loggedStatus = useSelector(state => state.loggedReducer);
 
     News.defaultProps = {
         newsCountry: "in",
@@ -48,7 +48,7 @@ function AppRoute() {
   return (
     <Routes>
     <Route exact path='*' element={<AuthRoute/>}/>
-    <Route path='/' element={!loggedStatus?<Login/>:<News key='general' newsCategory='general' bodyColorProp={bodyColor} hColorProp={hColor} modeProp={mode} badgeColorProp={badgeColor} modeSwitchProp={<ModeSwitch toggleMode={toggleMode} modeTxt={modeTxt}/>}/>}/>
+    <Route path='/' element={!loggedStatus===true?<Login/>:<News key='general' newsCategory='general' bodyColorProp={bodyColor} hColorProp={hColor} modeProp={mode} badgeColorProp={badgeColor} modeSwitchProp={<ModeSwitch toggleMode={toggleMode} modeTxt={modeTxt}/>}/>}/>
     <Route path='/news/general' element={<News key='general' newsCategory='general' bodyColorProp={bodyColor} hColorProp={hColor} modeProp={mode} badgeColorProp={badgeColor} modeSwitchProp={<ModeSwitch toggleMode={toggleMode} modeTxt={modeTxt}/>}/>}/>
     <Route path='/news/sports' element={<News key='sports' newsCategory='sports' bodyColorProp={bodyColor} hColorProp={hColor} modeProp={mode} badgeColorProp={badgeColor} modeSwitchProp={<ModeSwitch toggleMode={toggleMode} modeTxt={modeTxt}/>}/>}/>
     <Route path='/news/science' element={<News key='science' newsCategory='science' bodyColorProp={bodyColor} hColorProp={hColor} modeProp={mode} badgeColorProp={badgeColor} modeSwitchProp={<ModeSwitch toggleMode={toggleMode} modeTxt={modeTxt}/>}/>}/>

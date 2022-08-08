@@ -4,10 +4,8 @@ export const signIn = ()=>{
     }
 }
 
-export const signOut =()=>{
+export const signOut = ()=>{
     return{
         type: 'SIGN_OUT'
     }
 }
-
-
