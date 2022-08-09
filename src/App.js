@@ -11,7 +11,7 @@ function App(){
 
   return (
     <>
-    <BrowserRouter>
+    <BrowserRouter basename="/newsweb">
     <Routes>
      <Route exact path='*' element={<AppRoute/>}></Route>
     </Routes>
