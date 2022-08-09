@@ -7,8 +7,8 @@ function AuthRoute(){
 
   return (
     <Routes>
-    <Route path='/login' element={<Login/>}/>
-    <Route path='/register' element={<Register/>}/>
+    <Route path='/signin' element={<Login/>}/>
+    <Route path='/signup' element={<Register/>}/>
     </Routes>
   )
 }

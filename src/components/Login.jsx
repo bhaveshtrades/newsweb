@@ -26,7 +26,7 @@ function Login(){
   const[loginStatus, setLoginStatus] = useState();
 
   document.title = 'News - Login';
-  document.body.style.backgroundColor = 'rgb(78, 193, 255)'; 
+  document.body.style.backgroundColor = 'white'; 
 
   const onSubmit = (data) =>{
     const userData = JSON.parse(localStorage.getItem(data.email));
@@ -49,21 +49,31 @@ function Login(){
     <>
     {(loginStatus === true) && <Alert colorStatus='success' loginText='Login Successful!!!'></Alert>}
     {(loginStatus === false) && <Alert colorStatus='danger' loginText='Wrong Password. Try Again.'></Alert>}
-    <div className='grid h-screen place-items-center leading-10'>
+    <h1 className='appHeading'>NEWS APP</h1>
+    <div className='loginForm'>
     <form onSubmit={handleSubmit(onSubmit)}>
     <div className='loginContainer'>
-    <label htmlFor="email" className='labelLogin'>Enter Email: </label><br/>
+
+    <div className='loginHead'>
+    <h1 className='signInHeading'>Sign in</h1>
+    <h2>Stay Updated Everytime</h2>
+    </div>
+
     <input type="email" {...register('email', {required: "Email Required", pattern: {value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, message: "Enter Valid Email"}})} placeholder="Enter Your Email" className='loginInputs' disabled={loginStatus}/><br/>
     {errors.email && <div className='loginSpan'><span className='text-red-900 text-sm'>*{errors.email.message}</span></div>}
 
-    <label htmlFor="password" className='labelLogin'>Enter Password: </label><br/>
     <input type="password" {...register('password', {required: "Password Required"})} placeholder="Enter Your Password" className='loginInputs' disabled={loginStatus}/><br/>
     {errors.password && <div className='loginSpan'><span className='text-red-900 text-sm'>*{errors.password.message}</span></div>}
     </div>
 
-    <div className='flex gap-x-14 mt-10 justify-center'>
-    <button type='submit' className='loginSubmit'>Login</button>
-    <Link to = "/register" className='link'>Register here!!</Link>
+    <hr />
+
+    <div className='loginLinks'>
+    <button type='submit' className='loginSubmit'>Sign in</button><br />
+    <div className='linkDiv_Login'>
+    <span>New to News App?</span>
+    <Link to = "/signup" className='linkRegister'>Sign up from here!!</Link>
+    </div>
     </div> 
     
     </form>

@@ -94,7 +94,7 @@ function App({newsCountry, newsCategory, newsNumber, bodyColorProp, modeProp ,hC
     </div>
     <form className = "d-flex mr-3" role="search">
         <input className="form-control me-2" type="search" placeholder="Search News" aria-label="Search" onChange={enteredTitle}/>
-        <Link to ='/login'><button className="btn btn-outline-danger" type="submit" onClick={()=>dispatch(signOut)}>Logout</button></Link> 
+        <Link to ='/signin'><button className="btn btn-outline-danger" type="submit" onClick={()=>dispatch(signOut)}>Logout</button></Link> 
       </form>
     </nav>
     <h1 className={`text-center text-5xl mt-20 ${hColorProp}`}><b>News For You</b></h1>
