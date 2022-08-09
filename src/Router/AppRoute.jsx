@@ -45,6 +45,8 @@ function AppRoute() {
       }
     } 
 
+    
+
   return (
     <Routes>
     <Route exact path='*' element={<AuthRoute/>}/>
