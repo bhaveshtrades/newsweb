@@ -1,15 +1,13 @@
 import React, {useState} from 'react';
-import {useForm} from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Alert from './Alert';
-import { bindActionCreators } from 'redux';
-import { actionCreators } from '../state/actions/actionCreators';
+import { SIGN_IN } from '../reduxToolkit/signInStatus';
 
 function Login(){
 
   let dispatch = useDispatch();
-  const {signIn} = bindActionCreators(actionCreators, dispatch);
 
   if(document.body.classList.contains('bg-dark')){
     document.body.classList.remove('bg-dark');
@@ -32,7 +30,7 @@ function Login(){
     const userData = JSON.parse(localStorage.getItem(data.email));
     if (userData) {
         if (userData.password === data.password){
-          dispatch(signIn);
+          dispatch(SIGN_IN());
           setLoginStatus(true);
           setTimeout(()=>{
             navigate('/');

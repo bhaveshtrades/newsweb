@@ -3,13 +3,13 @@ import { Routes, Route } from 'react-router-dom';
 import News from '../components/News';
 import PropTypes from 'prop-types';
 import AuthRoute from './AuthRoute';
-import { useSelector } from 'react-redux';
 import Login from '../components/Login';
 import ModeSwitch from '../components/ModeSwitch';
+import { useSelector } from 'react-redux';
 
 function AppRoute() {
 
-  let loggedStatus = useSelector(state => state.loggedReducer);
+  const signInValue = useSelector((state)=> state.signingIn.value);
 
     News.defaultProps = {
         newsCountry: "in",
@@ -50,7 +50,7 @@ function AppRoute() {
   return (
     <Routes>
     <Route exact path='*' element={<AuthRoute/>}/>
-    <Route path='/' element={!loggedStatus===true?<Login/>:<News key='general' newsCategory='general' bodyColorProp={bodyColor} hColorProp={hColor} modeProp={mode} badgeColorProp={badgeColor} modeSwitchProp={<ModeSwitch toggleMode={toggleMode} modeTxt={modeTxt}/>}/>}/>
+    <Route path='/' element={!signInValue === true?<Login/>:<News key='general' newsCategory='general' bodyColorProp={bodyColor} hColorProp={hColor} modeProp={mode} badgeColorProp={badgeColor} modeSwitchProp={<ModeSwitch toggleMode={toggleMode} modeTxt={modeTxt}/>}/>}/>
     <Route path='/news/general' element={<News key='general' newsCategory='general' bodyColorProp={bodyColor} hColorProp={hColor} modeProp={mode} badgeColorProp={badgeColor} modeSwitchProp={<ModeSwitch toggleMode={toggleMode} modeTxt={modeTxt}/>}/>}/>
     <Route path='/news/sports' element={<News key='sports' newsCategory='sports' bodyColorProp={bodyColor} hColorProp={hColor} modeProp={mode} badgeColorProp={badgeColor} modeSwitchProp={<ModeSwitch toggleMode={toggleMode} modeTxt={modeTxt}/>}/>}/>
     <Route path='/news/science' element={<News key='science' newsCategory='science' bodyColorProp={bodyColor} hColorProp={hColor} modeProp={mode} badgeColorProp={badgeColor} modeSwitchProp={<ModeSwitch toggleMode={toggleMode} modeTxt={modeTxt}/>}/>}/>
