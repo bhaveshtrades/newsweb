@@ -9,8 +9,8 @@ function AuthRoute(){
     <Routes>
     <Route path='/signin' element={<Login/>}/>
     <Route path='/signup' element={<Register/>}/>
-    </Routes>
+    </Routes> 
   )
 }
 
-export default AuthRoute
+export default AuthRoute;

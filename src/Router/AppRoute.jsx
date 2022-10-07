@@ -17,10 +17,10 @@ function AppRoute() {
         newsNumber: 12
       }
       
-      News.propTypes = {
-        newsNumber: PropTypes.number,
-        newsCategory: PropTypes.string
-      }
+    News.propTypes = {
+      newsNumber: PropTypes.number,
+      newsCategory: PropTypes.string
+    }
 
     const[modeTxt, setModeTxt] = useState('Enable Dark Mode');
     const[hColor, setHColor] = useState('text-black');
