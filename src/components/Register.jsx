@@ -35,7 +35,7 @@ function Register() {
     }));
     setRegisterStatus(true);
     setTimeout(()=>{
-      navigate('/login');
+      navigate('/signin');
     }, 2000)
    }else{
     setConfirmAlert(true);
