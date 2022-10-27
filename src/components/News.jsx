@@ -77,17 +77,17 @@ function App({newsCountry, newsCategory, newsNumber, bodyColorProp, modeProp ,hC
     </div>
     <nav className="fixed-top navbar navbar-expand navbar-dark bg-dark">
     <div className="container-fluid">
-    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div className="navbar-nav gap-x-4 text-white">
-      <NavLink to ="/news/general" target={'_blank'}>General</NavLink>
-      <NavLink to ="/news/sports" target={'_blank'}>Sports</NavLink>
-      <NavLink to ="/news/science" target={'_blank'}>Science</NavLink>
-      <NavLink to ="/news/technology" target={'_blank'}>Technology</NavLink>
-      <NavLink to ="/news/health" target={'_blank'}>Health</NavLink>
-      <NavLink to ="/news/business" target={'_blank'}>Business</NavLink>
-      <NavLink to ="/news/politics" target={'_blank'}>Politics</NavLink>
-      <NavLink to ="/news/entertainment" target={'_blank'}>Entertainment</NavLink>
-      </div>
+    <div className="navbar-collapse" id="navbarNavAltMarkup">
+    <div  className="navbar-nav gap-x-4 text-white">
+      <NavLink to ="/news/general">General</NavLink>
+      <NavLink to ="/news/sports">Sports</NavLink>
+      <NavLink to ="/news/science">Science</NavLink>
+      <NavLink to ="/news/technology">Technology</NavLink>
+      <NavLink to ="/news/health">Health</NavLink>
+      <NavLink to ="/news/business">Business</NavLink>
+      <NavLink to ="/news/politics">Politics</NavLink>
+      <NavLink to ="/news/entertainment">Entertainment</NavLink>
+    </div>
     </div> 
     {modeSwitchProp}
     </div>
